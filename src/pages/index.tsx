@@ -1,8 +1,9 @@
 import Head from 'next/head';
-import { PageContainer } from '../../styles';
-import HomePageExamples from 'src/sections/HomePage/HomePageExample';
+import { PageContainer } from 'styles/index.css';
 
-const Home = () => (
+import ArrayComponent, { peopleData } from 'src/sections/ArrayTest/ArrayComponent';
+
+const Home = (): JSX.Element => (
   <>
     <Head>
       <title>Project Starter</title>
@@ -11,7 +12,7 @@ const Home = () => (
     </Head>
 
     <main className={PageContainer}>
-      <HomePageExamples />
+      <ArrayComponent data={peopleData}/>
     </main>
   </>
 );

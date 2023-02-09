@@ -1,13 +1,25 @@
 import { style, globalStyle } from '@vanilla-extract/css';
 
-globalStyle('html, body', {
-  margin: 0,
+globalStyle('html, body, ul, ol', {
+  margin: 10,
   boxSizing: 'border-box',
-  fontSize: 16,
+  listStyleType: 'none',
 });
 
-export const PageContainer = style({ 
+export const ListContainer = style({
+  listStyleType: 'none',
+  cursor: 'pointer',
+  color: 'black',
+});
+
+export const ListContainerAwesome = style({
+  color: 'red',
+  padding: 10,
+  cursor: 'pointer',
+});
+
+export const PageContainer = style({
   border: '5px solid green',
-  height: '95vh', 
-  margin: 8,
+  height: '300px',
+  width: '300px',
 });
