@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ListContainer, ListContainerAwesome } from 'styles/index.css';
+import { ListItemStyle, ListItemRed } from 'styles/index.css';
 
 export type peopleType = {
   id: number;
@@ -36,15 +36,14 @@ type listProps = {
   job: string;
 }
 
-
 const ListItem = ({ name, job}:listProps) => {
-  const [ style, setStyle ] = useState(ListContainer);
+  const [ style, setStyle ] = useState(ListItemStyle);
 
   const handleClick = ():void => {
-    if (style === ListContainer) {
-      setStyle(ListContainerAwesome);
+    if (style === ListItemStyle) {
+      setStyle(ListItemRed);
     } else {
-      setStyle(ListContainer);
+      setStyle(ListItemStyle);
     }
   };
 
@@ -52,7 +51,7 @@ const ListItem = ({ name, job}:listProps) => {
     <li
     data-testid="array-list-item"
     onClick={handleClick}
-    className={style}
+    className={ListItemStyle}
     >
     {name} : {job}
   </li>
@@ -61,7 +60,7 @@ const ListItem = ({ name, job}:listProps) => {
 
 const ArrayComponent:React.FC<arrayProps> = ({data}) => (
     <>
-    <h2 role="heading">Render List</h2>
+    <h2 style={{ color: 'red' }} className={ListItemRed}role="heading">Render List</h2>
     <ul>
     {data.map((person:peopleType, index:number) => (
       <ListItem
