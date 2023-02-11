@@ -37,17 +37,22 @@ describe('Initial Array test', () => {
 
 
   test('Click changes state', () => {
-    const items = screen.getAllByTestId('array-list-item');
+    const items = screen.getAllByRole('listitem');
 
     const firstItem = items[0];
-    // fireEvent.click(firstItem);
-    // expect(firstItem).toHaveStyle({
-    //   cursor: 'pointer',
-    // });
-
-    const thing = screen.queryByText('kitten', { exact: false });
-    expect(thing).toHaveTextContent('Tiger');
-    // expect(thing).toHaveStyle('color: black');
-    expect(thing).toBe('ListContainer');
+    expect(firstItem).toBeInTheDocument();
+    expect(firstItem).toHaveTextContent('pizza', { exact: false });
+    debugger;
+    console.log(firstItem.style);
+    // expect(firstItem).toHaveStyle({ color: 'black' });
+    
+    const heading = screen.getByRole('heading');
+    expect(heading).toHaveTextContent('Render List');
+    expect(heading).toHaveStyle({ color: 'red' });
+    console.log(window.getComputedStyle(heading));
+    // const thing = screen.queryByText('kitten', { exact: false });
+    // expect(thing).toHaveTextContent('Tiger');
+    // // expect(thing).toHaveStyle('color: black');
+    // expect(thing).toBe('ListContainer');
   });
 });

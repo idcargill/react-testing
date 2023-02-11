@@ -6,16 +6,12 @@ globalStyle('html, body, ul, ol', {
   listStyleType: 'none',
 });
 
-export const ListContainer = style({
-  listStyleType: 'none',
-  cursor: 'pointer',
+export const ListItemStyle = style({
   color: 'black',
 });
 
-export const ListContainerAwesome = style({
+export const ListItemRed = style({
   color: 'red',
-  padding: 10,
-  cursor: 'pointer',
 });
 
 export const PageContainer = style({
