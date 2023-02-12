@@ -24,6 +24,12 @@ module.exports = {
         "unnammedComponents": "arrow-function",
       }
     ],
+    // testing-library
+    "testing-library/await-async-query": "error",
+    "testing-library/no-await-sync-query": "error",
+    "testing-library/no-debugging-utils": "warn",
+    "testing-library/no-dom-import": "off",
+
     // "array-element-newline": ["error", {
     //   "ArrayExpression":  "consistent",
     //   "ArrayPattern": {
@@ -37,4 +43,11 @@ module.exports = {
     // "implicit-arrow-linebreak": ["error", "beside"],
     // "brace-style": ["warn", "1tbs" ] ,
   },
+  overrides: [
+		{
+			// 3) Now we enable eslint-plugin-testing-library rules or preset only for matching testing files!
+			files: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
+			extends: ['plugin:testing-library/react'],
+		}
+  ],
 };

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ListItemStyle, ListItemRed } from 'styles/index.css';
 
 export type peopleType = {
@@ -38,29 +38,37 @@ type listProps = {
 
 const ListItem = ({ name, job}:listProps) => {
   const [ style, setStyle ] = useState(ListItemStyle);
+  const [ text, setText ] = useState('');
+
+  useEffect(() => {
+    setText(name);
+  }, []);
+
 
   const handleClick = ():void => {
     if (style === ListItemStyle) {
       setStyle(ListItemRed);
+      setText('CLICKED!');
     } else {
       setStyle(ListItemStyle);
+      setText(name);
     }
   };
 
   return(
     <li
-    data-testid="array-list-item"
-    onClick={handleClick}
-    className={ListItemStyle}
+      data-testid="array-list-item"
+      onClick={handleClick}
+      className={ListItemStyle}
     >
-    {name} : {job}
+    {text} : {job}
   </li>
 );
 };
 
 const ArrayComponent:React.FC<arrayProps> = ({data}) => (
     <>
-    <h2 style={{ color: 'red' }} className={ListItemRed}role="heading">Render List</h2>
+    <h2 className={ListItemRed}role="heading">Render List</h2>
     <ul>
     {data.map((person:peopleType, index:number) => (
       <ListItem

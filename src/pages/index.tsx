@@ -2,6 +2,7 @@ import Head from 'next/head';
 import { PageContainer } from 'styles/index.css';
 
 import ArrayComponent, { peopleData } from 'src/sections/ArrayTest/ArrayComponent';
+import FetchingComponent from 'src/sections/ArrayTest/FetchingComponent';
 
 const Home = (): JSX.Element => (
   <>
@@ -13,6 +14,7 @@ const Home = (): JSX.Element => (
 
     <main className={PageContainer}>
       <ArrayComponent data={peopleData}/>
+      <FetchingComponent />
     </main>
   </>
 );

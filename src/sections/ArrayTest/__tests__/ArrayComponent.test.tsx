@@ -1,11 +1,13 @@
-import { fireEvent, getByTestId, render, screen } from '@testing-library/react';
+import { getByTestId, render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import '@testing-library/jest-dom';
+// import { ListItemStyle } from 'styles/index.css';
 
 import ArrayComponent, { peopleData } from '../ArrayComponent';
 
-
 describe('Initial Array test', () => {
+  const user = userEvent.setup();
+
   beforeEach(() => {
     render(<ArrayComponent data={peopleData} />);
   });
@@ -36,23 +38,26 @@ describe('Initial Array test', () => {
   });
 
 
-  test('Click changes state', () => {
+  test('List Items', async () => {
     const items = screen.getAllByRole('listitem');
 
     const firstItem = items[0];
+    // screen.debug(firstItem);
+
     expect(firstItem).toBeInTheDocument();
-    expect(firstItem).toHaveTextContent('pizza', { exact: false });
-    debugger;
-    console.log(firstItem.style);
-    // expect(firstItem).toHaveStyle({ color: 'black' });
+    expect(firstItem).toBeVisible();
+
+    expect(firstItem).toHaveTextContent('pizza');
+    expect(firstItem).not.toHaveTextContent('candy');
+    expect(firstItem).not.toBeDisabled();
     
-    const heading = screen.getByRole('heading');
-    expect(heading).toHaveTextContent('Render List');
-    expect(heading).toHaveStyle({ color: 'red' });
-    console.log(window.getComputedStyle(heading));
-    // const thing = screen.queryByText('kitten', { exact: false });
-    // expect(thing).toHaveTextContent('Tiger');
-    // // expect(thing).toHaveStyle('color: black');
-    // expect(thing).toBe('ListContainer');
+    // action
+    await user.click(firstItem);
+    // expect(firstItem);
+    
+    // const heading = screen.getByRole('heading');
+    // expect(heading).toHaveTextContent('Render List');
+
+
   });
 });
