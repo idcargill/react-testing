@@ -19,3 +19,11 @@ export const PageContainer = style({
   height: '300px',
   width: '300px',
 });
+
+
+export const Button = style({
+  border: '1px solid #b000bc',
+  backgroundColor: '#efa2ef',
+  padding: 5,
+  margin: 5,
+});
