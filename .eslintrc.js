@@ -1,9 +1,10 @@
 module.exports = {
-  "extends": ["next/core-web-vitals", "prettier"],
+  "extends": ["next/core-web-vitals", "prettier", "plugin:@typescript-eslint/recommended"],
   "root": true,
   "rules": {
     "no-var": "error",
-    "no-unused-vars": "error",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
     "no-duplicate-imports": "error",
     "prefer-const": "warn",
     "max-len": ["error", 120, { "ignoreUrls": true}],
